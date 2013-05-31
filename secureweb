@@ -1,7 +1,7 @@
 #!/bin/bash
-#secureweb, needs "sandbox" from policycoreutils-python and "seunshare" from policycoreutils-sandbox; libflashplayer.so must be placed under /opt (obtainable from adobe website, by downloading flash .tar.gz package)
+#secureweb, needs "sandbox" from policycoreutils-python and "seunshare" from policycoreutils-sandbox; libflashplayer.so must be placed under /opt (obtainable from adobe website, by downloading flash's .tar.gz package)
 if [ -a $HOME/.secureweb ]; then rm -fr $(cat $HOME/.secureweb); fi
-randomname=".$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 16 | head -n 1)"
+randomname=".$(cat /dev/urandom | tr -dc '[:alnum:]' | fold -w 16 | head -n 1)"
 echo $randomname > $HOME/.secureweb
 mkdir -p $HOME/$randomname/.mozilla/plugins
 cp /opt/libflashplayer.so $HOME/$randomname/.mozilla/plugins/libflashplayer.so
